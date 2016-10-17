@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<link rel="stylesheet" href="leaflet.css"/>
+		<link rel="stylesheet" href="leaflet.draw.css" />
+	
+	<!--[if lte IE 8]>
+		<link rel="stylesheet" href="lib/leaflet/leaflet.ie.css" />
+		<link rel="stylesheet" href="leaflet.draw.ie.css" />
+	<![endif]-->
+	
+	
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <style>
+
+.span6 { 
+    min-height: 500px;
+    height: 500px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+    <div class="row">
+    <h1>Форма заявки </h1>
+    </div>
+
+  <div class="row-fluid">
+    <div class="span6">
+      <!--Sidebar content-->
+
+      <form role="form">
+				<div class="form-group">
+					 
+					<label for="firstName">
+						Імя
+					</label>
+					<input type="text" class="form-control" id="firstName" />
+				</div>
+				<div class="form-group">
+					 
+					<label for="lastName">
+						Прізвище
+					</label>
+					<input type="text" class="form-control input-lg" id="lastName" />
+				</div>
+				<div class="form-group">
+                  <label>Провайдер</label>
+                  <select class="form-control">
+						<option value='1000000032'>Не маркований</option>
+						<option value='1'>ДП “Телегруп-Україна”</option>
+						<option value='1000000004'>ПАТ "Укртелеком"</option>
+						<option value='2'>ПП “Грін.нет”</option>
+						<option value='3'>ПП “НВФ “ПАК”</option>
+						<option value='4'>ПрАТ “Датагруп”</option>
+						<option value='5'>ПрАТ “Київстар”</option>
+						<option value='204000'>ПрАТ “МТС Україна”</option>
+						<option value='204000001'>ПрАТ “Телесистеми України”</option>
+						<option value='6'>ПрАТ “ТОП НЕТ”</option>
+						<option value='7'>ПрАТ “Фарлеп-Інвест”</option>
+						<option value='8'>ПрАТ ”Індастріал Медіа Нетворк”</option>
+						<option value='9'>СКП “Київтелесервіс”</option>
+						<option value='11'>ТОВ "АР-ТЕЛ"</option>
+						<option value='12'>ТОВ "ВІКА-ТВ"</option>
+						<option value='1000000021'>ТОВ "Гауди Девелопмент"</option>
+						<option value='1000000023'>ТОВ "Енерджітел"</option>
+						<option value='1000000024'>ТОВ "Інтелектуальні комунікації"</option>
+						<option value='1000000029'>ТОВ "ІНТЕРА 2015"</option>
+						<option value='1000000020'>ТОВ "ІСП ВІПЛАН"</option>
+						<option value='13'>ТОВ "Канком"</option>
+						<option value='204000004'>ТОВ "КТМ"</option>
+						<option value='1000000005'>ТОВ "НетАссіст"</option>
+						<option value='1000000016'>ТОВ "Старгруп"</option>
+						<option value='78000'>ТОВ "Сучасні телекомунікаційні мережі"</option>
+						<option value='1000000006'>ТОВ "ТОМС"</option>
+						<option value='1000000000'>ТОВ “АЙ ТІ НЕТ”</option>
+						<option value='209000'>ТОВ “АЙ-ЛІНК”</option>
+						<option value='14'>ТОВ “АЙОЛ НЕТ”</option>
+						<option value='15'>ТОВ “АРІНА ТЕЛЕКОМ”</option>
+						<option value='16'>ТОВ “АС6723”</option>
+						<option value='204000000'>ТОВ “АСТЕЛІТ”</option>
+						<option value='211000'>ТОВ “БАТИЇВКА”</option>
+						<option value='17'>ТОВ “Берлайн”</option>
+						<option value='18'>ТОВ “БіЛінк”</option>
+						<option value='19'>ТОВ “БУДІВНИЦТВО. РОЗВИТОК КОМУНІКАЦІЙ”</option>
+						<option value='20'>ТОВ “В.О.К.С.”</option>
+						<option value='213000'>ТОВ “ВАНКОМ”</option>
+						<option value='214000'>ТОВ “ВЕЛТОН.ТЕЛЕКОМ”</option>
+						<option value='21'>ТОВ “ВЕНБЕСТ”</option>
+						<option value='1000000022'>ТОВ “ГАУДИ ДЕВЕЛЕПМЕНТ”</option>
+						<option value='1000000026'>ТОВ “Д-Лайн”</option>
+						<option value='22'>ТОВ “Дабл-Ю Нет Україна”</option>
+						<option value='23'>ТОВ “Дельта-Нет”</option>
+						<option value='1000000027'>ТОВ “ДЖЕЙ ДІ ГРУП”</option>
+						<option value='1000000007'>ТОВ “Домус Магістраль”</option>
+						<option value='220000'>ТОВ “ЕМ АЙ АЙ ТІ”</option>
+						<option value='24'>ТОВ “ІМК”</option>
+						<option value='25'>ТОВ “ІНТЕРКОМ ПЛЮС СЕРВІС”</option>
+						<option value='96000'>ТОВ “ІНТЕРНАЦІОНАЛЬНІ ТЕЛЕКОМУНІКАЦІЇ”</option>
+						<option value='26'>ТОВ “Інтернет Комунікації“</option>
+						<option value='224000'>ТОВ “Інтрафік”</option>
+						<option value='27'>ТОВ “Інформаційно-транспортна мережева компанія“</option>
+						<option value='28'>ТОВ “ІТ ТЕЛЕСЕТЬ”</option>
+						<option value='29'>ТОВ “К-Лінк”</option>
+						<option value='1000000013'>ТОВ “Кабельний Телецентр”</option>
+						<option value='30'>ТОВ “Київські оптичні мережі”</option>
+						<option value='31'>ТОВ “Компанія “БЕСТ”</option>
+						<option value='229000'>ТОВ “КОНТЕНТ ДЕЛІВЕРІ НЕТВОРК”</option>
+						<option value='230000'>ТОВ “Корбіна Телеком”</option>
+						<option value='32'>ТОВ “Космонова”</option>
+						<option value='1000000028'>ТОВ “лайфселл”</option>
+						<option value='1000000031'>ТОВ “ЛОКАЛ НЕТ”</option>
+						<option value='1000000030'>ТОВ “ЛОКАЛНЕТ”</option>
+						<option value='33'>ТОВ “МІПС Груп”</option>
+						<option value='34'>ТОВ “МІТ СКАЙНЕТ”</option>
+						<option value='35'>ТОВ “МОБІКОМ”</option>
+						<option value='36'>ТОВ “Нашнет”</option>
+						<option value='37'>ТОВ “НВФ “ВОЛЗ”</option>
+						<option value='74000'>ТОВ “Одеські цифрові комунікації”</option>
+						<option value='1000000015'>ТОВ “Омега Телеком”</option>
+						<option value='38'>ТОВ “ОРІОН СІТІ“</option>
+						<option value='39'>ТОВ “Пролайн ТМ”</option>
+						<option value='40'>ТОВ “ПРОСАТ”</option>
+						<option value='41'>ТОВ “РЕАЛ НЕТ”</option>
+						<option value='1000000012'>ТОВ “РОСТ-КРЕДО”</option>
+						<option value='42'>ТОВ “Санлайн.нет.юа”</option>
+						<option value='1000000010'>ТОВ “СІЛЬВЕР СТАНДАРТ”</option>
+						<option value='43'>ТОВ “Сільвер Телеком”</option>
+						<option value='44'>ТОВ “СОФТЛІНК”</option>
+						<option value='1000000025'>ТОВ “Старгруп”</option>
+						<option value='45'>ТОВ “СТАРНЕТ НЕТВОРК”</option>
+						<option value='46'>ТОВ “Т.Е.С.Т.”</option>
+						<option value='97000'>ТОВ “Телеканал "Тоніс”</option>
+						<option value='98004'>ТОВ “Телекомунікаційні оптичні мережі та системи”</option>
+						<option value='47'>ТОВ “ТЕЛП”</option>
+						<option value='48'>ТОВ “Теремки Лан”</option>
+						<option value='249000'>ТОВ “Транс Трафік”</option>
+						<option value='250000'>ТОВ “Трест Укртелебуд”</option>
+						<option value='98000'>ТОВ “ТриМоб”</option>
+						<option value='49'>ТОВ “Туполєва ІСП”</option>
+						<option value='50'>ТОВ “Українські оптичні системи”</option>
+						<option value='51'>ТОВ “Укрдатаком”</option>
+						<option value='52'>ТОВ “УКРЛІНК”</option>
+						<option value='53'>ТОВ “УТЕЛС”</option>
+						<option value='54'>ТОВ “УТК”</option>
+						<option value='55'>ТОВ “Фауст”</option>
+						<option value='55000'>ТОВ “Фауст”</option>
+						<option value='56'>ТОВ “ФРІНЕТ”</option>
+						<option value='57'>ТОВ “Хоумнет”</option>
+						<option value='58'>ТОВ ”Бі.Джі.Нет”</option>
+						<option value='98005'>ТОВ ”ВАНКОМ”</option>
+						<option value='59'>ТОВ ”Гіга Транс”</option>
+						<option value='1000000017'>ТОВ ”ГІГАТРАНС УКРАЇНА”</option>
+						<option value='60'>ТОВ ”ДАТАЛАЙН”</option>
+						<option value='61'>ТОВ ”ДЖЕНТЕЛ”</option>
+						<option value='62'>ТОВ ”Ен-Лайн”</option>
+						<option value='63'>ТОВ ”ІНТЕЛЕКОМ-С”</option>
+						<option value='64'>ТОВ ”ІНТЕР-ТЕЛЕКОМ”</option>
+						<option value='65'>ТОВ ”Інфоаура”</option>
+						<option value='66'>ТОВ ”Київські мережі”</option>
+						<option value='67'>ТОВ ”Комкаст Україна”</option>
+						<option value='68'>ТОВ ”ЛАНЕТ ТЕЛЕКОМ”</option>
+						<option value='69'>ТОВ ”Лямбда Нет”</option>
+						<option value='70'>ТОВ ”МІКСНЕТ”</option>
+						<option value='71'>ТОВ ”Навігатор-Онлайн”</option>
+						<option value='72'>ТОВ ”Найснет плюс”</option>
+						<option value='73'>ТОВ ”НЕТМАСТЕР”</option>
+						<option value='98003'>ТОВ ”Нова Мережа”</option>
+						<option value='74'>ТОВ ”Одеські цифрові комунікації”</option>
+						<option value='75'>ТОВ ”Павутина.Нет”</option>
+						<option value='76'>ТОВ ”САННЕТ”</option>
+						<option value='77'>ТОВ ”СІНЕТ ІСП”</option>
+						<option value='98002'>ТОВ ”Сучасні телекомунікаційні мережі”</option>
+						<option value='79'>ТОВ ”Телесистеми України”</option>
+						<option value='80'>ТОВ ”Українські новітні телекомунікації”</option>
+						<option value='81'>ТОВ НВО “Інформаційні технології”</option>
+						<option value='82'>ТОВ”Дрім Лайн Холдінг”</option>
+						<option value='1000000001'>ФОП "Тинюк Антон Васильович"</option>
+						<option value='1000000019'>ФОП Гончаров О.О.</option>
+						<option value='1000000002'>ФОП Демчук Сергій Олександрович</option>
+						<option value='255000'>ФОП Дмитрук Святослав Володимирович</option>
+						<option value='83'>ФОП Жилінський Павло Володимирович</option>
+						<option value='84'>ФОП Кишенюк Олег Федорович</option>
+						<option value='85'>ФОП Мігунов Євгеній Юрійович</option>
+						<option value='86'>ФОП Мовчан Олексій Олександрович</option>
+						<option value='1000000011'>ФОП Негоденко М.А.</option>
+						<option value='1000000014'>ФОП Негоденко Максим Анатолійович</option>
+						<option value='87'>ФОП Ніколаєнко Микола Іванович</option>
+						<option value='256000'>ФОП Одемчук Леся Петрівна</option>
+						<option value='88'>ФОП Панчук Євген Вікторович</option>
+						<option value='1000000009'>ФОП Прокопенко Сергій Володимирович</option>
+						<option value='89'>ФОП Савчин Ігор Мирославович</option>
+						<option value='90'>ФОП Сердюк Дмитро Анастасійович</option>
+						<option value='91'>ФОП Тисленко Олександр Борисович</option>
+						<option value='204000005'>ФОП Титюк Антон Васильович</option>
+						<option value='92'>ФОП Торяник Сергій Олександрович</option>
+						<option value='93'>ФОП Хоменко Вадим Олександрович</option>
+						<option value='94'>ФОП Цвєтков Денис Олександрович</option>
+						<option value='257000'>ФОП Цирін Андрій Олександрович</option>
+						<option value='1000000003'>ФОП Юдін Сергій Володимирович</option>
+						<option value='95'>ФОП Японцева Юлія Сергіївна</option>
+
+                    </select>
+                  </div>
+				 <div class="form-group">
+                <label  for="infringement" >Суть порушення</label>
+                <textarea class="form-control" rows="5" id="infringement"></textarea>
+                                        </div>
+				<div class="form-group">
+					 
+					<label for="exampleInputFile">
+						File input
+					</label>
+					<input type="file" id="exampleInputFile" />
+					<p class="help-block">
+						Example block-level help text here.
+					</p>
+				</div>
+				<button type="submit" class="btn btn-default">
+					Submit
+				</button>
+			</form>
+    </div>
+
+
+    <div id = "map" class="span6">
+      <!--Body content-->
+    </div>
+  </div>
+</div>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="leaflet.js"></script>
+	<script src="leaflet.draw.js"></script>
+	<script>
+	
+		var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib}),
+			map = new L.Map('map', {layers: [osm], center: new L.LatLng(50.4282339, 30.5604789), zoom: 10 });
+
+			var drawnItems = new L.FeatureGroup();
+			map.addLayer(drawnItems);
+
+			// Initialise the draw control and pass it the FeatureGroup of editable layers
+			var drawControl = new L.Control.Draw({
+			draw: {
+				position: 'topleft',
+				polyline:  false,
+				polygon:   false,
+				circle:    false,
+				rectangle: false,
+				marker:    {}
+			},
+			edit: {
+				featureGroup: drawnItems
+			}
+		});
+
+		L.drawLocal.draw.handlers.marker.tooltip.start="Клікніть на карті щоб позначити будинок";
+		L.drawLocal.draw.toolbar.buttons.marker="Позначити будинок на карті";
+		
+		map.addControl(drawControl);
+
+		map.on('draw:created', function (e) {
+			var ev = e;
+			var type = e.layerType,
+				layer = e.layer;
+
+			if (type === 'marker') {
+				var firstName=$('#firstName').val();
+				var lastName=$('#lastName').val();
+				var infringement=$('#infringement').val();
+				var photo =$('#exampleInputFile').val();
+				var text='<table><tr><th scope="row"> Імя</th><td>'+firstName+ '</td></tr><tr><th scope="row"> Прізвище</th><td>'+lastName+'</td></tr><tr><th scope="row"> Суть скарги</th><td>'+infringement+ '</td></tr><tr><th scope="row"> Фото порушення</th><td> <img src="'+photo+'"</td></tr></table>';
+
+
+				layer.bindPopup(text);
+			}
+
+			
+			drawnItems.addLayer(layer);
+		});
+
+
+
+
+		
+	</script>
+  </body>
+</html>

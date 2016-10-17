@@ -1,0 +1,158 @@
+  {% extends "v1/base.html" %}
+  {% block data %}
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+  <meta name="viewport" content="width=device-width , initial-scale=1.0">
+  <link rel="stylesheet" href="{{STATIC_URL}}LeafLet/map/screen.css" />
+  <link rel="stylesheet" href="{{STATIC_URL}}LeafLet/map/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="{{STATIC_URL}}LeafLet/map/dist/MarkerCluster.Default.css" />
+  <script src="{{STATIC_URL}}LeafLet/map/dist/leaflet.markercluster-src.js"></script>
+  <script src="{{STATIC_URL}}LeafLet/map/realworld.50000.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <style>
+    #map{
+		height: 500px;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+    }
+    .modal-header, h4, .close {
+      background-color: #5cb85c;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+    </style>
+
+ <!-- Modal -->
+
+<div class="container">
+<!-- Modal style -->
+
+  <style>
+  .modal-header, h4, .close {
+      background-color: #242121;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: #242121;
+  }
+button {
+    background-color: #e7e7e7; color: black;
+}
+  .modal-content {
+  width: 800px;
+   }
+  </style>
+  <div class="modal fade" id="myModal" role="dialog" >
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-home"></span> Детальна інформація</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="adress"><span ></span> Адреса</label>
+              <input type="text" class="form-control" id="adress" value="{{adress}}">
+            </div>
+            <div class="form-group">
+              <label for="balans"><span ></span> Балансоутримувач</label>
+              <input type="text" class="form-control" id="balans"value="{{balans}}">
+            </div>
+               <div class="form-group">
+              <label for="balans"><span ></span>Обслуговуюча організація </label>
+              <input type="text" class="form-control" id="service"value="{{service}}">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" ><span class="glyphicon glyphicon-remove"></span> Закрити</button>
+          <button type="button" class="btn btn-primary btn-default pull-right"  id ="send_claim"><span class="glyphicon glyphicon-file"></span> Подати заявку на розміщення обладнання</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<!-- Modal content-->
+<!-- Modal -->
+
+	<script type="text/javascript">
+        $("#send_claim").click(function (id){
+          var p=$.post('../send_claim/',{ id: 89980}, function(data){
+            $("#service").val(p.responseJSON.adress);
+          });
+          
+        });
+
+
+		var Butmod = function(id){
+				var obj=$.get("../build_detal_information/", {id: id}, function(data){
+				$("#adress").val(obj.responseJSON.adress);
+				$("#balans").val(obj.responseJSON.balans);
+				$("#service").val(obj.responseJSON.service);
+
+          		 }
+				);
+		  	    $("#myModal").modal();
+   			 };
+		var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+				maxZoom: 18,
+				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+			}),
+			latlng = L.latLng(50.4282339, 30.5604789);
+
+		var map = L.map('map', { center: latlng, zoom: 11, layers: [tiles] });
+
+		var progress = document.getElementById('progress');
+		var progressBar = document.getElementById('progress-bar');
+
+		function updateProgressBar(processed, total, elapsed, layersArray) {
+			if (elapsed > 1000) {
+				// if it takes more than a second to load, display the progress bar:
+				progress.style.display = 'block';
+				progressBar.style.width = Math.round(processed/total*100) + '%';
+			}
+
+			if (processed === total) {
+				// all markers processed - hide the progress bar:
+				progress.style.display = 'none';
+			}
+		}
+
+		var markers = L.markerClusterGroup({ chunkedLoading: true, chunkProgress: updateProgressBar });
+
+		var markerList = [];
+
+		//console.log('start creating markers: ' + window.performance.now());
+
+		for (var i = 0; i < addressPoints.length; i++) {
+			var a = addressPoints[i];
+			var title = a[2];
+			
+			//var text  = '<table><tr><th scope="row">Адреса </th><td> <a href="http://127.0.0.1:8000/admin/drtm/build/'+a[4]+'/change/" target="_blank">'+a[2]+'</a> </td></tr><tr><th scope="row">Провайдер </th><td>' +a[3]+ '</td></tr><button type="button" class="btn btn-info btn-lg" onclick="Butmod()">Open Modal</button></table>';
+			var text  = '<table><tr><th scope="row">Адреса </th><td> <a href="#" onclick="Butmod('+a[4]+')">'+a[2]+'</a> </td></tr><tr><th scope="row">Провайдер </th><td>' +a[3]+ '</td></tr></table>';			
+
+			var marker = L.marker(L.latLng(a[0], a[1]), { title: title} );
+			marker.bindPopup(text);
+	
+			markerList.push(marker);
+		}
+		
+		//console.log('start clustering: ' + window.performance.now());
+
+		markers.addLayers(markerList);
+		map.addLayer(markers);
+		//console.log('end clustering: ' + window.performance.now());
+	</script>
+{% endblock %}

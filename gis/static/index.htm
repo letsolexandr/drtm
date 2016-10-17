@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--jQuery dependencies-->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+<!--PQ Grid files-->
+    <link rel="stylesheet" href="{{ STATIC_URL }}/pqgrid.min.css" />
+    <script src="{{ STATIC_URL }}/pqgrid.min.js"></script>
+<!--PQ Grid Office theme-->
+    <link rel="stylesheet" href="{{ STATIC_URL }}/themes/office/pqgrid.css" />
+</head>
+<body>
+dsadadada
+<div id="grid_array" style="margin:100px;"></div>
+<script>
+    $(function () {
+        var data = [{% for item in data %}[1,"{{ item.question_text }}", '339938.0', '36130.0'],{% endfor %}];
+
+        var obj = { 
+            width: 700, 
+            height: 400, 
+            numberCell:{resizable:true,title:"#",width:30,minWidth:30},
+            editor: {type: 'textbox'},
+            title: "ParamQuery Grid with Array data",
+            resizable:true,
+            scrollModel:{autoFit:true, theme:true},
+            draggable:true 
+        };
+        obj.colModel = [
+            { title: "Rank", width: 100, dataType: "integer" },
+            { title: "Company", width: 200, dataType: "string" },
+            { title: "Revenues ($ millions)", width: 150, dataType: "float", align: "right" },
+            { title: "Profits ($ millions)", width: 150, dataType: "float", align: "right"}
+        ];
+        obj.dataModel = { data: data };
+        $("#grid_array").pqGrid(obj);
+    });
+        
+</script>   
+</body>
+
+</html>

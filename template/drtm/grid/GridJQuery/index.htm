@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--jQuery dependencies-->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+<!--PQ Grid files-->
+    <link rel="stylesheet" href="{{STATIC_URL}}pqgrid.min.css" />
+    <script src="{{STATIC_URL}}pqgrid.min.js"></script>
+<!--PQ Grid Office theme-->
+    <link rel="stylesheet" href="{{STATIC_URL}}themes/office/pqgrid.css" />
+</head>
+<body>
+<div id="grid_array" style="margin:100px;"></div>
+<div>
+<ul> 
+"{{TIME_ZONE}}"
+ adr ==={{user}}
+</ul>
+<ul>
+
+
+
+Your ip:{% for i in requestData %} <li> <b>KEY = </b> {{i.0}}, <b> VALUE=</b> {{i.1}}</li>{% endfor %}
+</ul>
+</div>
+<script>
+    $(function () {
+        var data = [{% for item in data %}[{{ item.id }},"{{ item.name }}", "{{ item.balans }}", "{{ item.service }}"],{% endfor %}];
+        var obj = { 
+            width: 700, 
+            height: 400, 
+            numberCell:{resizable:true,title:"#",width:30,minWidth:30},
+            editor: {type: 'textbox'},
+            title: "ParamQuery Grid with Array data",
+            resizable:true,
+            scrollModel:{autoFit:true, theme:true},
+            draggable:true 
+        };
+        obj.colModel = [
+            { title: "Код", width: 100, dataType: "integer" },
+            { title: "Адреса", width: 200, dataType: "string" },
+            { title: "Балансоутримувач", width: 150, dataType:  "string" },
+            { title: "Обслуговувач", width: 150, dataType: "string"}
+        ];
+        obj.dataModel = { data: data };
+        $("#grid_array").pqGrid(obj);
+    });
+        
+</script>   
+</body>
+
+</html>
